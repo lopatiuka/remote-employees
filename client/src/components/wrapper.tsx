@@ -8,14 +8,16 @@ import './vacancies.scss';
 import { vacanciesStore } from '../stores/vacancie.store';
 import { Vacancie } from './vacancie.item';
 
+
 export class Wrapper extends React.Component{
-    componentWillMount(){
+    constructor( props ){
+        super( props );
         vacanciesStore.getAllVacancies();
     }
     render(){
         return <div>
-        <Router>
-            <div className = "top">
+            <Router>
+           <div className = "top">
                 <div className = "navigation">
                     <NavLink exact to = "/" className = "link" activeClassName = "activeLink">Main</NavLink>
                     <NavLink to = "/vacancies" className = "link" activeClassName = "activeLink">Vacancies</NavLink>
@@ -25,8 +27,8 @@ export class Wrapper extends React.Component{
                 <Route exact path = "/" component = { Main }/>
                 <Route exact path = "/vacancies" component = { Vacancies }/>
                 <Route path = "/vacancies/:id" component = { Vacancie }/>
-            </Switch>
-      </Router>
-        </div>
+        </Switch>
+        </Router>
+    </div>
     }
 }

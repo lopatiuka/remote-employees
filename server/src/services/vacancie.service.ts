@@ -1,7 +1,9 @@
 import { getRepository } from 'typeorm';
 import Vacancie from '../models/vacancie.entity';
 
-class VacanciesService {
+export let totalVacanciesCount: number;
+
+class VacancieService {
     private vacancieRepository;
 
     constructor(){
@@ -11,6 +13,7 @@ class VacanciesService {
     public async getAll(){
         try{
             let vacancies = await this.vacancieRepository.find();
+            totalVacanciesCount = vacancies.length;
             return vacancies;
         }
         catch( error ){
@@ -70,4 +73,4 @@ class VacanciesService {
     }
 }
 
-export default VacanciesService;
+export default VacancieService;

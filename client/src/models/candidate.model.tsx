@@ -1,18 +1,19 @@
 import { types } from "mobx-state-tree";
 
 export const CandidateItem = types.model({
-    name: types.optional( types.string, "" ),
-    telephone: types.optional( types.string, "" ),
-    email: types.optional( types.string, "" ),
-    vacancie: types.optional( types.string, "" ),
-    cvLink: types.optional( types.string, "" ),
-    testTaskLink: types.optional( types.string, "" ),
-    howKnow: types.optional( types.string, "" ),
+    fullName: types.optional( types.string, "asd" ),
+    telephone: types.optional( types.string, "123" ),
+    email: types.optional( types.string, "asd" ),
+    vacancie: types.optional( types.string, "asd" ),
+    cvLink: types.optional( types.string, "asd" ),
+    testTaskLink: types.optional( types.string, "asd" ),
+    howKnow: types.optional( types.string, "asd" ),
     message: types.optional( types.string, "" )
 })
 .actions( self => ({
-    setName( newName ){
-        self.name = newName;
+    setName( newFullName ){
+        self.fullName = newFullName;
+        console.log(self.fullName);
     },
 
     setTelephone( newTelephone ){
@@ -25,6 +26,7 @@ export const CandidateItem = types.model({
 
     setVacancie( newVacancie ){
         self.vacancie = newVacancie;
+        console.log(self.vacancie);
     },
 
     setCvLink( newCvLink ){

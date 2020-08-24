@@ -1,6 +1,8 @@
 import React from "react";
-import { candidateModel } from "../stores/candidate.store";
+import { candidateModel, candidateStore } from "../stores/candidate.store";
+import { observer } from "mobx-react";
 
+@observer
 export class CandidateForm extends React.Component{
     render(){
         return <div className = "candidate-form">
@@ -8,7 +10,7 @@ export class CandidateForm extends React.Component{
             <p>заполните форму для подачи заявки</p>
             <form className = "candidate-form">
                 <div>
-                    <input type = "text" placeholder = "ФИО" value = { candidateModel.name }
+                    <input type = "text" placeholder = "ФИО" value = { candidateModel.fullName }
                     onChange = { e => candidateModel.setName( e.target.value )}/>
 
                     <input type = "phone" placeholder = "Телефон" value = { candidateModel.telephone } 
@@ -37,7 +39,9 @@ export class CandidateForm extends React.Component{
                 <input type = "text" placeholder = "Оставьте сообщение" value = { candidateModel.message }
                 onChange = { e => candidateModel.setMessage( e.target.value )}/>
 
-                <input type = "submit" value = "ОТПРАВИТЬ" className = "send-button"/>
+                <input type = "submit" value = "ОТПРАВИТЬ" className = "send-button"
+                 onClick = { e => candidateStore.create( e, candidateModel.fullName, candidateModel.telephone, candidateModel.email,candidateModel.vacancie, 
+                 candidateModel.cvLink,candidateModel.testTaskLink, candidateModel.howKnow, candidateModel.message ) }/>
             </form>
         </div>
     }
