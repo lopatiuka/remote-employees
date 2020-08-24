@@ -26,7 +26,7 @@ export class VacancieService{
 
     public async create( body ){
         try{
-            let vacancie = await axios.get( this.path, body );
+            let vacancie = await axios.post( this.path, body );
             return vacancie.data;
         }
         catch( error ){
@@ -36,7 +36,7 @@ export class VacancieService{
 
     public async edit( id, body ){
         try{
-            let editedVacancie = await axios.get( `${ this.path }/:${ id }`, body );
+            let editedVacancie = await axios.put( `${ this.path }/:${ id }`, body );
             return editedVacancie.data;
         }
         catch( error ){
@@ -46,7 +46,7 @@ export class VacancieService{
 
     public async delete( id ){
         try{
-            let deletedVacancie = await axios.get( `${ this.path }/:${ id }` );
+            let deletedVacancie = await axios.delete( `${ this.path }/:${ id }` );
             return deletedVacancie.data;
         }
         catch( error ){

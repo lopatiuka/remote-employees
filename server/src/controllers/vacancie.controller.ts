@@ -1,12 +1,12 @@
 import * as express from 'express';
-import VacanciesService from '../services/vacancie.service';
+import VacanciesService, { totalVacanciesCount } from '../services/vacancie.service';
 
 class VacanciesController {
     private service: VacanciesService = new VacanciesService();
 
     public getAll = async( request: express.Request, response: express.Response ) => {
         let vacancies = await this.service.getAll();
-        response.send( vacancies );
+        response.header( "X-Total-Count", `${ totalVacanciesCount }` ).send( vacancies );
     }
 
     public getById = async( request: express.Request, response: express.Response ) => {

@@ -20,12 +20,12 @@ export class VacanciesList extends React.Component{
                 <ul className = "vacancies">
                     { vacanciesStore.vacancies.map( vacancie => {
                         if( vacanciesStore.category === "" ){
-                            return <li><p className = "content">{ vacancie.title }</p>
+                            return <li key = { vacancie.id }><p className = "content">{ vacancie.title }</p>
                             <NavLink to = {`/vacancies/${ vacancie.id }`} className = "link">Подробнее</NavLink></li>
                         }
                         else{
                             return vacancie.category.toLowerCase() === vacanciesStore.category ? 
-                            <li><p className = "content">{ vacancie.title }</p>
+                            <li key = { vacancie.id }><p className = "content">{ vacancie.title }</p>
                             <NavLink to = {`/vacancies/${ vacancie.id }`} className = "link">Подробнее</NavLink></li> : null
                         }
                         

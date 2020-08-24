@@ -1,6 +1,6 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
-import { getRepository } from 'typeorm';
+import  session from 'express-session';
 
 class App {
   public app: express.Application;
@@ -13,16 +13,25 @@ class App {
     this.initializeMiddlewares();
     this.initializeControllers( controllers );
   }
- 
+  
   private initializeMiddlewares() {
      this.app.use(bodyParser.json()); 
+
      this.app.use(function( req, res, next ) {
-      res.header("Access-Control-Allow-Origin", "http://localhost:3000"  ); // update to match the domain you will make the request from
-      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH");
-      res.header( "Access-Control-Allow-Credentials", "true");
+      res.header( "Access-Control-Allow-Origin", "http://localhost:3000"  ); 
+      res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Authorization, Accept, Content-Range" );
+      res.header( "Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH" );
+      res.header( "Access-Control-Allow-Credentials", "true" );
+      res.header( "Access-Control-Expose-Headers", "Content-Range, X-Total-Count" );
       next();
     });
+    
+    this.app.use( session({
+      secret: 'SECRET', 
+      cookie: { maxAge: 120000 },
+      resave: true,
+      saveUninitialized: true
+    }));
   }
  
   private initializeControllers( controllers ) {

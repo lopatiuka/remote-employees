@@ -11,16 +11,14 @@ const VacancieList = types.model({
 .actions( self => ({
     async getAllVacancies(){
         let result = await service.getAll();
-        if( result ){
-            self.vacancies = result;
-        }
+        result.message ? alert( "Что-то не так, перезагрузите сайт" ) : self.vacancies = result;
     },
     
     vacanciesFilter( e, category, items, activeClass ){
         self.category = category;
         for( let i = 0; i < items.length; i++ )
         {
-            if( items[i].innerText == e.target.innerText )
+            if( items[i].innerText === e.target.innerText )
             items[i].classList.add( activeClass );
             else
             items[i].classList.remove( activeClass );
