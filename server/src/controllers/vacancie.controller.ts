@@ -6,7 +6,7 @@ class VacanciesController {
 
     public getAll = async( request: express.Request, response: express.Response ) => {
         let vacancies = await this.service.getAll();
-        response.header( "X-Total-Count", `${ totalVacanciesCount }` ).send( vacancies );
+        response.header( "Content-Range", `bytes 200-1000/${ totalVacanciesCount }` ).send( vacancies );
     }
 
     public getById = async( request: express.Request, response: express.Response ) => {

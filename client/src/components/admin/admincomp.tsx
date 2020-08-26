@@ -6,6 +6,7 @@ import { VacancieList, VacancieEdit, VacancieCreate } from './vacancie';
 import { CandidateList } from './candidates';
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
+import dataProvider from './dataprovider';
 
 
 const httpClient = (url, options: any = {}) => {
@@ -17,7 +18,7 @@ const httpClient = (url, options: any = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = jsonServerProvider( 'http://localhost:5000', httpClient );
+// const dataProvider = jsonServerProvider( 'http://localhost:5000', httpClient );
 
 
 function AdminComponent( props ) {
