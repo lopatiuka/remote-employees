@@ -380,3 +380,44 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.vacancie-form{
+    width: 300px;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    input{
+        width: 250px;
+        height: 40px;
+        margin: 10px;
+        border-radius: 10px;
+        border: 1px solid rgb(185, 185, 185);
+    }
+    input[type = "submit"]{
+        width: 90px;
+        height: 30px;
+        background-color: rgb(10, 160, 247);
+        color: rgb(255, 254, 254);
+        border: none;
+        border-radius: 5px;
+    }
+    input[type = "submit"]:hover{
+        background-color: rgb(3, 102, 231);
+        cursor: pointer;
+    }
+    input[type = "file"]{
+        border: none;
+        border-radius: 0;
+    }
+    select{
+        width: 255px;
+        height: 45px;
+        margin: 10px;
+        box-sizing: content-box;
+        border-radius: 10px;
+        border: 1px solid rgb(185, 185, 185);
+    }
+}

@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import Vacancie from '../models/vacancie.entity';
+import FileReader from 'filereader';
 
 export let totalVacanciesCount: number;
 
@@ -21,12 +22,21 @@ class VacancieService {
         }
     }
 
-    public async create( data ){
+    public async create( data, file ){
         try{
-            let newVacancie = await this.vacancieRepository.save( data );
+            const vacancie = {
+                title: data.title,
+                description: data.description,
+                category: data.category,
+                imagePath:  file.path
+            }
+            
+            let newVacancie = await this.vacancieRepository.save( vacancie );
             return newVacancie;
         }
         catch( error ){
+            console.log(error);
+
             return error;
         }
     }
@@ -41,9 +51,16 @@ class VacancieService {
         }
     }
 
-    public async edit ( id, body ){
+    public async edit ( id, data, file ){
         try{
-            await this.vacancieRepository.update( id, body );
+            const newVacancie = {
+                title: data.title,
+                description: data.description,
+                category: data.category,
+                imagePath: file.path
+            }
+            
+            await this.vacancieRepository.update( id, newVacancie );
             const updatedVacancie = await this.vacancieRepository.findOne( id );
             if ( updatedVacancie ) {
             return( updatedVacancie );

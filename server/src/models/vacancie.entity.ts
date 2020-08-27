@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 
+
 @Entity()
 class Vacancie{
     @PrimaryGeneratedColumn()
@@ -15,7 +16,7 @@ class Vacancie{
     public category: string;
 
     @Column()
-    public image: string;
+    public imagePath: string;
 }
 
 export default Vacancie;

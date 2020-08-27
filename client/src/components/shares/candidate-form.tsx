@@ -1,5 +1,5 @@
 import React from "react";
-import { candidateModel, candidateStore } from "../stores/candidate.store";
+import { candidateModel, candidateStore } from "../../stores/candidate.store";
 import { observer } from "mobx-react";
 
 @observer

@@ -1,7 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { vacanciesStore } from '../stores/vacancie.store';
+import { vacanciesStore } from '../../stores/vacancie.store';
 import { NavLink } from 'react-router-dom';
+
 
 @observer
 export class VacanciesList extends React.Component{
@@ -20,7 +21,7 @@ export class VacanciesList extends React.Component{
                 <ul className = "vacancies">
                     { vacanciesStore.vacancies.map( vacancie => {
                         if( vacanciesStore.category === "" ){
-                            return <li key = { vacancie.id }><p className = "content">{ vacancie.title }</p>
+                            return <li key = { vacancie.id }><img src = { `../../../../${ vacancie.imagePath }` } alt = "vacancie" ></img><p className = "content">{ vacancie.title }</p>
                             <NavLink to = {`/vacancies/${ vacancie.id }`} className = "link">Подробнее</NavLink></li>
                         }
                         else{

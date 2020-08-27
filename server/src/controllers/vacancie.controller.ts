@@ -6,7 +6,7 @@ class VacanciesController {
 
     public getAll = async( request: express.Request, response: express.Response ) => {
         let vacancies = await this.service.getAll();
-        response.header( "Content-Range", `bytes 200-1000/${ totalVacanciesCount }` ).send( vacancies );
+        response.header( "X-Total-Count", `${ totalVacanciesCount }` ).send( vacancies );
     }
 
     public getById = async( request: express.Request, response: express.Response ) => {
@@ -15,12 +15,12 @@ class VacanciesController {
     }
 
     public create = async( request: express.Request, response: express.Response ) => {
-        let newVacancie = await this.service.create( request.body );
+        let newVacancie = await this.service.create( request.body, request.file );
         response.send( newVacancie );
     }
 
     public edit = async( request: express.Request, response: express.Response ) => {
-        let editedVacancie = await this.service.edit( request.params.id, request.body );
+        let editedVacancie = await this.service.edit( request.params.id, request.body, request.file );
         response.send( editedVacancie );
     }
 
