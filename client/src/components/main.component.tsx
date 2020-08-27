@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Footer } from './footer';
-import { CandidateForm } from './candidate-form';
+import { Footer } from './shares/footer';
+import { CandidateForm } from './shares/candidate-form';
+import { TopNavigation } from './shares/top-navigation';
 
 export class Main extends React.Component{
     render(){
         return <div>
+            <TopNavigation/>
             <section className = "main">
                 <div>
                     <p>REMOTE STAFF<br/><span>NEEDED</span></p>

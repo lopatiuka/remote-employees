@@ -1,7 +1,7 @@
 import React from 'react';
 import jsonServerProvider from 'ra-data-json-server';
 import { Admin, Resource, fetchUtils } from 'react-admin';
-import authProvider from './authProvider';
+import authProvider from './auth-provider';
 import { VacancieList, VacancieEdit, VacancieCreate } from './vacancie';
 import { CandidateList } from './candidates';
 import PostIcon from '@material-ui/icons/Book';

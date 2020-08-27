@@ -15,12 +15,12 @@ class VacanciesController {
     }
 
     public create = async( request: express.Request, response: express.Response ) => {
-        let newVacancie = await this.service.create( request.body );
+        let newVacancie = await this.service.create( request.body, request.file );
         response.send( newVacancie );
     }
 
     public edit = async( request: express.Request, response: express.Response ) => {
-        let editedVacancie = await this.service.edit( request.params.id, request.body );
+        let editedVacancie = await this.service.edit( request.params.id, request.body, request.file );
         response.send( editedVacancie );
     }
 

@@ -1,6 +1,16 @@
 import express from 'express';
 import * as bodyParser from 'body-parser';
 import  session from 'express-session';
+import multer from "multer";
+
+const storageConfig = multer.diskStorage({
+  destination: (req, file, cb) =>{
+      cb(null, "images");
+  },
+  filename: (req, file, cb) =>{
+      cb(null, file.originalname);
+  }
+});
 
 class App {
   public app: express.Application;
@@ -15,9 +25,13 @@ class App {
   }
   
   private initializeMiddlewares() {
-     this.app.use(bodyParser.json()); 
-
-     this.app.use(function( req, res, next ) {
+    this.app.use("/index", function(req,res){
+      res.sendFile(__dirname + "/index.html")
+    })
+    
+    this.app.use(bodyParser.json()); 
+    this.app.use(multer({storage:storageConfig}).single("image"));
+    this.app.use(function( req, res, next ) {
       res.header( "Access-Control-Allow-Origin", "http://localhost:3000"  ); 
       res.header( "Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Authorization, Accept, Content-Range" );
       res.header( "Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE, PATCH" );

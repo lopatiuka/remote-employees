@@ -1,8 +1,6 @@
 import * as express from 'express';
 import { AdminController } from '../controllers/admin.controller';
-import passport from 'passport';
 import authenticationMiddleware from '../middlewares/authentication.middleware';
-import cors from "cors"
 
 class AdminRoute{
   // public path = '/admin';
