@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/remote-employees/static/css/main.332c4584.chunk.css",
+    "main.js": "/remote-employees/static/js/main.a9eb8c05.chunk.js",
+    "main.js.map": "/remote-employees/static/js/main.a9eb8c05.chunk.js.map",
+    "runtime-main.js": "/remote-employees/static/js/runtime-main.ba295b99.js",
+    "runtime-main.js.map": "/remote-employees/static/js/runtime-main.ba295b99.js.map",
+    "static/js/2.64d36fd5.chunk.js": "/remote-employees/static/js/2.64d36fd5.chunk.js",
+    "static/js/2.64d36fd5.chunk.js.map": "/remote-employees/static/js/2.64d36fd5.chunk.js.map",
+    "index.html": "/remote-employees/index.html",
+    "precache-manifest.9a345bff9fbde1670fa0d4051275941c.js": "/remote-employees/precache-manifest.9a345bff9fbde1670fa0d4051275941c.js",
+    "service-worker.js": "/remote-employees/service-worker.js",
+    "static/css/main.332c4584.chunk.css.map": "/remote-employees/static/css/main.332c4584.chunk.css.map",
+    "static/js/2.64d36fd5.chunk.js.LICENSE.txt": "/remote-employees/static/js/2.64d36fd5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba295b99.js",
+    "static/js/2.64d36fd5.chunk.js",
+    "static/css/main.332c4584.chunk.css",
+    "static/js/main.a9eb8c05.chunk.js"
+  ]
+}
