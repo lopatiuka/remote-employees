@@ -2,6 +2,7 @@ import express from 'express';
 import * as bodyParser from 'body-parser';
 import  session from 'express-session';
 import multer from "multer";
+import path from "path";
 
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) =>{
@@ -11,6 +12,8 @@ const storageConfig = multer.diskStorage({
       cb(null, file.originalname);
   }
 });
+
+const ENV = process.env.NODE_ENV;
 
 class App {
   public app: express.Application;
@@ -25,9 +28,13 @@ class App {
   }
   
   private initializeMiddlewares() {
-    this.app.use("/index", function(req,res){
-      res.sendFile(__dirname + "/index.html")
-    })
+    
+    if( ENV === "production" ){
+      this.app.use( express.static( path.join( __dirname, "../client/biuld" ) ) );
+      this.app.use( ( req,res ) => {
+        res.sendFile( path.join( __dirname, "../client/build/index.html" ) );
+      });
+    }  
     
     this.app.use(bodyParser.json()); 
     this.app.use(multer({storage:storageConfig}).single("image"));
